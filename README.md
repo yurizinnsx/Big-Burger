@@ -59,7 +59,7 @@ Contributions are welcome! If you have suggestions for improvements or new featu
 ## Developer
 This project was created by **Yuri Ribeiro Cequeira**.
 
-- GitHub: [@yuriribeirocequeira](https://github.com/yuriribeirocequeira)
+- GitHub: [@yuriribeirocequeira](https://github.com/yurizinnsx)
 - Email: yuri.cequeira@example.com (replace with actual email if applicable)
 
 ## License
