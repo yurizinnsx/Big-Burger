@@ -60,7 +60,7 @@ Contributions are welcome! If you have suggestions for improvements or new featu
 This project was created by **Yuri Ribeiro Cequeira**.
 
 - GitHub: [@yuriribeirocequeira](https://github.com/yurizinnsx)
-- Email: yuri.cequeira@example.com (replace with actual email if applicable)
+- Email: yurir8958@gmail.com 
 
 ## License
 This project is licensed under the [MIT License](LICENSE).
