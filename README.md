@@ -21,7 +21,7 @@ This is a simple and responsive online menu built using **HTML** and **Tailwind 
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yuriribeirocequeira/online-menu.git
+   git clone https://github.com/yurizinnsx/Big-Burger.git
    ```
 
 2. Navigate to the project directory:
