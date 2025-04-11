@@ -1,14 +1,15 @@
 const menu = document.getElementById("menu");
 const cartBtn = document.getElementById("cart-btn");
 const cartModal = document.getElementById("cart-modal");
-const cartItemsContainer = document.getElementById("cart-items"); // nome certo aqui!
+const cartItemsContainer = document.getElementById("cart-items");
 const cartTotal = document.getElementById("cart-total");
 const checkoutBtn = document.getElementById("checkout-btn");
 const closeModalBtn = document.getElementById("close-modal-btn");
 const cartCounter = document.getElementById("cart-count");
 const addressInput = document.getElementById("address");
-const addressWarn = document.getElementById("address-warn"); // estava "adress-warn"
-const cart = [];
+const addressWarn = document.getElementById("address-warn");
+
+let cart = [];
 
 // Abrir carrinho
 cartBtn.addEventListener("click", () => {
@@ -55,12 +56,11 @@ function updateCartModal() {
   cartItemsContainer.innerHTML = "";
   let total = 0;
 
-  cart.forEach((item, index) => {
+  cart.forEach((item) => {
     total += item.price * item.quantity;
 
     const cartItemElement = document.createElement("div");
     cartItemElement.classList.add("mb-4");
-
     cartItemElement.innerHTML = `
       <div class="flex justify-between items-center bg-white shadow p-2 rounded">
         <div>
@@ -69,23 +69,32 @@ function updateCartModal() {
           <p>Preço: R$${(item.price * item.quantity).toFixed(2)}</p>
         </div>
         <div>
-          <button class="text-red-500 hover:underline" onclick="removeItem(${index})">Remover</button>
+          <button class="text-red-500 hover:underline" onclick="removeItemCart('${item.name}')">Remover</button>
         </div>
       </div>
+  
     `;
 
     cartItemsContainer.appendChild(cartItemElement);
   });
 
-  // Atualiza valor total no carrinho
   cartTotal.innerText = `Total: R$${total.toFixed(2)}`;
-
-  // Atualiza o contador do ícone
   cartCounter.innerText = cart.length;
 }
 
-// Remove item do carrinho
-function removeItem(index) {
-  cart.splice(index, 1);
-  updateCartModal();
-}
+// Remove 1 unidade ou o item inteiro do carrinho
+function removeItemCart(name) {
+  const index = cart.findIndex(item => item.name === name);
+
+  if (index !== -1) {
+    const item = cart[index];
+
+    if (item.quantity > 1) {
+      item.quantity -= 1;
+    } else {
+      cart.splice(index, 1);
+    }
+
+    updateCartModal();
+  }
+} 
