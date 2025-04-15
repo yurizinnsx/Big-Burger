@@ -97,4 +97,35 @@ function removeItemCart(name) {
 
     updateCartModal();
   }
-} 
+}
+
+addressInput.addEventListener("input", function (event) {
+  let inputValue = event.target.value;
+
+})
+
+checkoutBtn.addEventListener("click", function (params) {
+  if (cart.length === 0) return;
+  if (addressInput.value === "") {
+    addressWarn.classList.remove("hidden")
+    addressInput.classList.add("border-red-500")
+    return
+  }
+})
+
+function checkRestaurantOpen() {
+  const data = new Date()
+  const hora = data.getHours()
+  return hora >= 18 && hora < 22 ;
+
+}
+
+const spanItem = document.getElementById("date-span")
+const isOpen = checkRestaurantOpen()
+if (isOpen) {
+  spanItem.classList.remove("bg-red-500")
+  spanItem.classList.add("bg-green-600")
+}else{
+  spanItem.classList.remove("bg-green-600")
+  spanItem.classList.add("bg-red-500")
+}
