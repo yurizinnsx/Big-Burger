@@ -104,13 +104,36 @@ addressInput.addEventListener("input", function (event) {
 
 })
 
-checkoutBtn.addEventListener("click", function (params) {
+checkoutBtn.addEventListener("click", function () {
+
+// const isOpen = checkRestaurantOpen();
+// if (!isOpen) {
+// alert("RESTAURANTE FECHADO MO MOMENTO")
+// }
+
   if (cart.length === 0) return;
-  if (addressInput.value === "") {
-    addressWarn.classList.remove("hidden")
-    addressInput.classList.add("border-red-500")
-    return
+  if (addressInput.value.trim() === "") {
+    addressWarn.classList.remove("hidden");
+    addressInput.classList.add("border-red-500");
+    return;
+  } else {
+    addressWarn.classList.add("hidden");
+    addressInput.classList.remove("border-red-500");
   }
+  
+// Enviar o pedido para api whatsapp
+
+const cartItems = cart.map((item)=>{
+return(
+  `${item.name} Quantidade: (${item.quantity}) Preço: R$${item.price}|`
+)
+}).join("")
+
+const message = encodeURIComponent(cartItems)
+const phone = "21999295346"
+
+window.open(`https://wa.me/${phone}?text=${message} Endereço: ${addressInput.value}`,"blank")
+
 })
 
 function checkRestaurantOpen() {
